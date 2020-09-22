@@ -8,11 +8,13 @@ import retrofit2.converter.gson.GsonConverterFactory
 object APIHopder{
     private val BASE_URL = "http://dummy.restapiexample.com/api/v1/"
 
-    val publicApiRxJava2: PublicApi by lazy {
-        Retrofit.Builder().baseUrl(BASE_URL).
-        addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create().build()
-        .create(PublicApi::class.java))
+    val publicApiRxJava2: PublicApiForRxJava2 by lazy {
+        Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create()
+            .build()
+            .create(PublicApiForRxJava2::class.java))
     }
 
 }
